@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MainPage</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./css/login.css" />
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('a.login-window').click(function() {
+    
+            //Getting the variable's value from a link 
+            var loginBox = $(this).attr('href');
+
+            //Fade in the Popup   -->popup id 넣기
+            $(loginBox).fadeIn(300);
+            
+            //Set the center alignment padding + border see css style
+            var popMargTop = ($(loginBox).height() + 24) / 2; 
+            var popMargLeft = ($(loginBox).width() + 24) / 2; 
+            
+            $(loginBox).css({ 
+                'margin-top' : -popMargTop,
+                'margin-left' : -popMargLeft
+            });
+    
+            // Add the mask to body
+            $('body').append('<div id="mask"></div>');
+            $('#mask').fadeIn(300);
+            
+            return false;
+        });
+
+        // When clicking on the button close or the mask layer the popup closed
+        $('a.close_window, #mask').live('click', function() { 
+          $('#mask , .login-popup').fadeOut(300 , function() {
+            $('#mask').remove();  
+        }); 
+        return false;
+        });
+    });
+        
+    </script>
+</head>
+
+<body>
+    <div class="group">
+        <div class="group_header">
+            <div id="header_logo">
+                감시소
+            </div>
+            <div class="header_menu">
+                <div id="header_timeline">
+                TIMELINE    
+                </div>
+                <div id="header_statistics">
+                STATISTICS    
+                </div>
+            </div>
+            <div id="header_login">
+                LOGIN
+            </div>
+        </div>
+        <div class="center">
+            <div class="center_logo">
+                감시소
+            </div>
+            <div class="center_info">
+                <div id="center_info_a">CCTV를 활용하여 절도/강도 </div>
+                <div id="center_info_b">예방, 관리해 드립니다. </div>
+            </div>
+            <div class="center_detailinfo">
+                <div id="center_detailinfo_a">영상분석 (가중치 점수 조합,계산)을 통한 범죄 인식으로 </div>
+                <div id="center_detailinfo_b">추가 신고 행위가 필요 없으며 정확도가 높은 </div>
+                <div id="center_detailinfo_c">감시소의 차별화된 장점과 기대효과를 가집니다. </div>
+            </div>
+            
+            <!-- login popup 시작 -->
+            <div id ="login_popup" class="login-popup">
+                <div class="close_window">
+                    <a href="#" class="close"><img src="image/X.png" width="14" height="12" alt="CLOSE"></a>
+                </div>
+                <div class="login_logo">
+                    로그인
+                </div>
+                <form method="post" action="login.php" onsubmit="javascript:returnIt(this)">    
+                    <div class="textbox">
+                        <label for="ex_input">아이디</label>
+                        <input type="text" name="id" id="ex_input">
+                    </div>
+                    <div class="textbox">
+                      <label for="ex_input2">비밀번호</label>
+                      <input type="password" name="passwd" id="ex_input2">
+                    </div>
+                    <div id="login_btn">
+                        <input type="iamge" src="./image/loginbutton.png" width="210px" style="margin:20px 64px">
+                    </div>
+                </form> 
+            </div>
+            
+            <!-- login popup 끝 -->
+            <div class="center_button">
+                <div id="log_in">
+                    <a href="#login_popup" class="login-window"><img src="image/login.png" width="126" height="46" alt="login"></a>
+                </div>
+                <div id="sign_in">
+                    <img src="image/signin.png" width="126" height="46" alt="signin">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
