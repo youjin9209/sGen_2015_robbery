@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,16 +34,32 @@
             
             return false;
         });
+	
+/*
+	var placeholderTarget = $('.textbox input[type="text"], .textbox input[type="password"]');
+  
+              //포커스시
+              placeholderTarget.on('focus', function(){
+                $(this).siblings('label').fadeOut('fast');
+              });
 
-        // When clicking on the button close or the mask layer the popup closed
-        $('a.close_window, #mask').live('click', function() { 
+              //포커스아웃시
+              placeholderTarget.on('focusout', function(){
+                if($(this).val() == ''){
+                  $(this).siblings('label').fadeIn('fast');
+                }
+	});
+*/
+	// When clicking on the button close or the mask layer the popup closed
+        $('a.close, #mask').live('click', function() { 
           $('#mask , .login-popup').fadeOut(300 , function() {
             $('#mask').remove();  
         }); 
         return false;
         });
     });
-        
+ 
+
     </script>
 </head>
 
@@ -50,18 +67,20 @@
     <div class="group">
         <div class="group_header">
             <div id="header_logo">
-                감시소
+               <img src = "image/logo_btn.jpg" style="width:80px" > 
             </div>
             <div class="header_menu">
                 <div id="header_timeline">
-                TIMELINE    
-                </div>
+                <a href="timeline_page.php">
+   		<img src="image/timeline_btn.jpg" height="15px" style="margin-bottom:60px; margin-left:600px "  alt ="timeline">
+		</a>
+		</div>
                 <div id="header_statistics">
-                STATISTICS    
+                <img src ="image/statistic_btn.jpg" height="15px" style="margin-bottom:60px;"  alt = "stati">   
                 </div>
             </div>
             <div id="header_login">
-                LOGIN
+      		<img src = "image/login_btn.jpg" height = "15px" style="margin-bottom:60px;margin-right:10px "  alt = "login">
             </div>
         </div>
         <div class="center">
@@ -87,27 +106,24 @@
                     로그인
                 </div>
                 <form method="post" action="login.php" onsubmit="javascript:returnIt(this)">    
-                    <div class="textbox">
-                        <label for="ex_input">아이디</label>
-                        <input type="text" name="id" id="ex_input">
-                    </div>
-                    <div class="textbox">
-                      <label for="ex_input2">비밀번호</label>
-                      <input type="password" name="passwd" id="ex_input2">
-                    </div>
-                    <div id="login_btn">
-                        <input type="iamge" src="./image/loginbutton.png" width="210px" style="margin:20px 64px">
-                    </div>
-                </form> 
+			<div class="textbox" style="margin-top:30px"> 
+			    <input type="text" name="id" id="ex_input" placeholder="아이디">
+			</div>
+			<div class="textbox" style="margin-top:4px">
+			  <input type="password" name="passwd" id="ex_input2" placeholder="비밀번호">
+			</div>
+			<div id="login_btn">
+			    <input type="image" src="./image/loginbutton.png" width="213px" height="42px" style="margin:20px 64px">
+			</div>
+    		</form>  
             </div>
             
-            <!-- login popup 끝 -->
             <div class="center_button">
                 <div id="log_in">
-                    <a href="#login_popup" class="login-window"><img src="image/login.png" width="126" height="46" alt="login"></a>
+                    <a href="#login_popup" class="login-window"><img src="image/login.png" width="126" height="46" alt="login" style="margin-left:700px;margin-right:8px" ></a>
                 </div>
                 <div id="sign_in">
-                    <img src="image/signin.png" width="126" height="46" alt="signin">
+                    <img src="image/signin.png" width="126" height="46" alt="signin"   >
                 </div>
             </div>
         </div>
